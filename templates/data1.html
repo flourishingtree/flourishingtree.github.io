@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html style="height: 100%">
+    <head>
+	<title>排行榜</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="" />
+    <link rel="stylesheet" href="../static/css/layui.css" media="all">
+	<link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="../static/css/style.css" rel='stylesheet' type='text/css' />
+	<link href="../static/css/blog.css" type="text/css" rel="stylesheet" media="all">
+	<link href="../static/css/fontawesome-all.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/layui.css"  media="all">
+
+	<link href="http://fonts.googleapis.com/css?family=Poppins:100i,200,200i,300,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
+</head>
+    <body style="height: 100%; margin: 0">
+    <header>
+		<div class="header_top" id="home">
+			<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+				<a class="navbar-brand" href="index.html">
+					<i class="fab fa-digital-ocean"></i> 数据可视化</a>
+				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mx-auto tp-nav text-center">
+						<li class="nav-item">
+							<a class="nav-link" href="index.html">主页
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="ranking.html">排行榜</a>
+
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="wordcloud.html">词云</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+							    aria-expanded="false">
+								数据分析
+							</a>
+
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="data1.html">2019，2020热门类型</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="data2.html">2019，2020长短集数量对比</a>
+                                <div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="data3.html">2020一天当中的评论时间</a>
+                                <div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="data4.html">月度时间播出与评论数量</a>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href=''>联系我们</a>
+						</li>
+					</ul>
+					<form action="#" method="post" class="form-inline my-2 my-lg-0 search">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search here..." name="Search" required="">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+
+				</div>
+			</nav>
+		</div>
+	</header>
+        <div id="container" style="height: 80%"></div>
+        <section class="stats_test container-fluid">
+		<div class="row inner_stat_wthree_agileits">
+			<div class="col-md-3 stats_left counter_grid">
+				<i class="far fa-building"></i>
+				<p class="counter">485</p>
+				<h4>电视剧量</h4>
+			</div>
+			<div class="col-md-3 stats_left counter_grid1">
+				<i class="fas fa-users"></i>
+				<p class="counter">128284</p>
+				<h4>评论内容</h4>
+			</div>
+			<div class="col-md-3 stats_left counter_grid2">
+				<i class="far fa-edit"></i>
+				<p class="counter">11419699</p>
+				<h4>评论量</h4>
+			</div>
+			<div class="col-md-3 stats_left counter_grid3">
+				<i class="far fa-smile"></i>
+				<p class="counter">2</p>
+				<h4>年</h4>
+			</div>
+
+		</div>
+		</div>
+	</section>
+        <div class="copyright">
+		<div class="container">
+
+			<div class="copyrightbottom" data-aos="fade-right">
+				<p> &copy; 2021</p>
+
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+        <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+
+var option;
+
+
+
+option = {
+    title: {
+        text: '2019,2020类型对比饼状图',
+        subtext: '',
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    series: [
+        {
+            name: '2019年度类型',
+            type: 'pie',
+            radius: [20, 140],
+            center: ['25%', '50%'],
+            itemStyle: {
+                borderRadius: 5
+            },
+            data: [
+                {value: 124, name: '剧情'},
+                {value: 91, name: '爱情'},
+                {value: 32, name: '古装'},
+                {value: 33, name: '悬疑'},
+                {value: 23, name: '喜剧'},
+                {value: 22, name: '奇幻'},
+                {value: 16, name: '犯罪'},
+                {value: 5, name: '武侠'},
+                {value: 9, name: '家庭'},
+                {value: 4, name: '冒险'},
+                {value: 9, name: '历史'},
+                {value: 3, name: '战争'},
+                {value: 3, name: '动作'},
+                {value: 4, name: '惊悚'},
+                {value: 2, name: '传记'},
+                {value: 4, name: '科幻'},
+                {value: 3, name: '儿童'},
+                {value: 3, name: '短片'},
+                {value: 1, name: '歌舞'},
+            ]
+        },
+        {
+            name: '2020年度类型',
+            type: 'pie',
+            radius: [20, 140],
+            center: ['75%', '50%'],
+            itemStyle: {
+                borderRadius: 5
+            },
+            data: [
+                {value: 144, name: '剧情'},
+                {value: 127, name: '爱情'},
+                {value: 64, name: '古装'},
+                {value: 57, name: '悬疑'},
+                {value: 37, name: '喜剧'},
+                {value: 29, name: '奇幻'},
+                {value: 28, name: '犯罪'},
+                {value: 10, name: '武侠'},
+                {value: 9, name: '家庭'},
+                {value: 6, name: '冒险'},
+                {value: 5, name: '历史'},
+                {value: 5, name: '战争'},
+                {value: 8, name: '动作'},
+                {value: 4, name: '惊悚'},
+                {value: 2, name: '传记'},
+                {value: 2, name: '科幻'}
+            ]
+        }
+    ]
+};
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+}
+
+        </script>
+    <script type="text/javascript" src="../static/js/jquery-2.2.3.min.js"></script>
+	<!-- //js -->
+	<!-- simpleLightbox -->
+	<script src="../static/js/simpleLightbox.js"></script>
+	<script>
+		$('.proj_gallery_grid a').simpleLightbox();
+	</script>
+	<!-- //simpleLightbox -->
+	<!-- flexSlider -->
+	<script defer src="../static/js/jquery.flexslider.js"></script>
+	<script type="text/javascript">
+
+	  $(window).load(function(){
+		$('.flexslider').flexslider({
+		  animation: "slide",
+		  start: function(slider){
+			$('body').removeClass('loading');
+		  }
+		});
+	  });
+	</script>
+
+	<!-- //flexSlider -->
+
+	<!-- stats -->
+	<script src="../static/js/jquery.waypoints.min.js"></script>
+	<script src="../static/js/jquery.countup.js"></script>
+	<script>
+		$('.counter').countUp();
+	</script>
+	<!-- //stats -->
+	<!-- /js files -->
+	<link href='../static/css/aos.css' rel='stylesheet prefetch' type="text/css" media="all" />
+	<link href='../static/css/aos-animation.css' rel='stylesheet prefetch' type="text/css" media="all" />
+	<script src='../static/js/aos.js'></script>
+	<script src="../static/js/aosindex.js"></script>
+	<!-- //js files -->
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="../static/js/move-top.js"></script>
+	<script type="text/javascript" src="../static/js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 900);
+			});
+		});
+	</script>
+	<!-- start-smoth-scrolling -->
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			/*
+									var defaults = {
+							  			containerID: 'toTop', // fading element id
+										containerHoverID: 'toTopHover', // fading element hover id
+										scrollSpeed: 1200,
+										easingType: 'linear'
+							 		};
+									*/
+
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<a href="#home" class="scroll" id="toTop" style="display: block;">
+		<span id="toTopHover" style="opacity: 1;"> </span>
+	</a>
+	<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    </body>
+</html>
+    
